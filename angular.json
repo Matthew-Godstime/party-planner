@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "party-planner:build:production",
+            "firebaseProject": "party-planner-b06e3",
+            "firebaseHostingSite": "party-planner-b06e3"
+          }
         }
       }
     }
