@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
    */
   public login(formData: FormData) {
     this.auth.logIn(formData).then(() => {
-      this.router.navigateByUrl('/home')
+      this.router.navigateByUrl(`${this.auth.redirectUrl}`)
     }).catch(error => {
       alert(error.message);
     })

@@ -10,6 +10,9 @@ export class AuthService {
 
   constructor(private readonly auth: Auth) { }
 
+  // store the URL so we can redirect after logging in
+  public redirectUrl: string | null = null;
+  
   /**
    * getUser returns the current user
    */
