@@ -6,6 +6,7 @@ import { PartyRootComponent } from './party-root/party-root.component';
 import { PartyDetailsComponent } from './party-details/party-details.component';
 import { PartyListComponent } from './party-list/party-list.component';
 import { CreatePartyComponent } from './shared/create-party/create-party.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CreatePartyComponent } from './shared/create-party/create-party.compone
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     PartyRoutingModule
   ]
 })

@@ -1,1 +1,35 @@
-<p>party-list works!</p>
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <div>
+            <h1 class="text-center fs">Your Events</h1>
+            <a routerLink="./new" class="btn btn-outline-success">Add new Event</a>
+        </div>
+        <hr>
+        <div *ngIf="dataReady else waiting">
+            <a class="text-decoration-none" *ngFor="let party of partyList" [routerLink]="[party.id]"
+                routerLinkActive="router-link-active">
+                <div class="card" style="width: 18rem; margin: .5em auto .5em;">
+                    <div class="card-body shadow">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h2 class="card-title">{{party?.eventName}}</h2>
+                            </li>
+                            <li class="list-group-item">
+                                <p>Ticket: <strong>${{party?.ticketPrice}}</strong></p>
+                            </li>
+                            <div class="list-group-item">
+                                <p>Date: <strong>{{party?.date | date }}</strong></p>
+                            </div>
+
+                        </ul>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <ng-template #waiting>
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,1 +1,31 @@
-<p>party-details works!</p>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4">
+        <div *ngIf="currentParty">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h4 class="text-muted text-center mb-5 card-title">
+                        <a class="float-start text-decoration-none fs-5" routerLink="../">&#10094; Back</a>
+                        {{ currentParty.eventName }}
+                    </h4>
+                    <h6 class="card-subtitle mb-4 text-muted">Event's Profits:
+                        <span [class.profitable]="currentParty.revenue! - currentParty.cost! > 0"
+                            [class.no-profit]="currentParty.revenue! - currentParty.cost! <= 0">
+                            {{ currentParty.revenue! - currentParty.cost! | currency }}
+                        </span>
+                    </h6>
+                    <p>Ticket: <strong>${{ currentParty.ticketPrice }}</strong></p>
+                    <p>Date: <strong>{{ currentParty.date | date }}</strong></p>
+                </div>
+                <h5 class="ms-3 mb-0">Tickets Sold: {{ currentParty.revenue! / currentParty.ticketPrice! }}</h5>
+                <div class="btn-group btn-group-lg mt-5 " role="group" aria-label="Large button group">
+                    <button type="button" class="btn w-50 btn-outline-danger"
+                    (click)="addTicketOperation('refund')">Refund Ticket -</button>
+                    <button type="button" class="btn w-50 btn-outline-success"
+                    (click)="addTicketOperation('add')">Sell Ticket +</button>
+                </div>
+                <button type="button" class="btn btn-outline-dark"
+                (click)="removeParty()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

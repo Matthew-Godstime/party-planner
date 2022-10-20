@@ -1,1 +1,33 @@
-<p>create-party works!</p>
+<div class="row">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card">
+            <div class="card-body shadow">
+                <h4 class="text-muted text-center mb-5">
+                    <a class="float-start text-decoration-none fs-5" routerLink="../">&#10094; Back</a>
+                    Add new Event
+                </h4>
+                <form [formGroup]="partyForm" (ngSubmit)="createEvent()">
+                    <div class="mb-3">
+                        <label for="event-name" class="form-label">Event Name</label>
+                        <input type="text" class="form-control" placeholder="What's the name of your event?" id="eventName" formControlName="eventName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ticketPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" placeholder="How much will guest pay?" id="ticketPrice" formControlName="ticketPrice">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cost" class="form-label">Cost</label>
+                        <input type="number" class="form-control" placeholder="How much are you spending" id="cost" formControlName="cost">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="datetime-local" class="form-control" id="date" formControlName="date">
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="!partyForm.valid">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

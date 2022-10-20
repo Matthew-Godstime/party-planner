@@ -6,6 +6,7 @@ import { PartyDetailsComponent } from './party-details/party-details.component';
 import { PartyListComponent } from './party-list/party-list.component';
 import { PartyRootComponent } from './party-root/party-root.component';
 import { CreatePartyComponent } from './shared/create-party/create-party.component';
+import { PartyResolverService } from './shared/services/party-resolver.service';
 
 const routes: Routes = [
   {
@@ -16,9 +17,14 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AuthChildGuard],
         children: [
-          { path: '', component: PartyListComponent },
-          { path: ':id', component: PartyDetailsComponent },
+          {
+            path: '', component: PartyListComponent,
+            resolve: {
+              parties: PartyResolverService
+            }
+          },
           { path: 'new', component: CreatePartyComponent },
+          { path: ':partyId', component: PartyDetailsComponent },
         ]
       }
       
